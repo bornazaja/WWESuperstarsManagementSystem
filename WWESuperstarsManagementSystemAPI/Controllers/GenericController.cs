@@ -46,16 +46,37 @@ namespace WWESuperstarsManagementSystemAPI.Controllers
                 if (validationResults.IsEmpty())
                 {
                     TReadDto readDto = _genericService.Add(saveDto, _propertiesToInclude);
-                    return Ok(new SaveResponseDto<TReadDto> { IsSuccessful = true, Message = "Data is successfully saved.", Data = readDto, ValidationResults = validationResults, PropertyInfoListOfDto = _propertyInfoList });
+                    return Ok(new SaveResponseDto<TReadDto>
+                    {
+                        IsSuccessful = true,
+                        Message = "Data is successfully saved.",
+                        Data = readDto,
+                        ValidationResults = validationResults,
+                        PropertyInfoListOfDto = _propertyInfoList
+                    });
                 }
                 else
                 {
-                    return BadRequest(new SaveResponseDto<TReadDto> { IsSuccessful = false, Message = "Invalid data.", Data = null, ValidationResults = validationResults, PropertyInfoListOfDto = null });
+                    return BadRequest(new SaveResponseDto<TReadDto>
+                    {
+                        IsSuccessful = false,
+                        Message = "Invalid data.",
+                        Data = null,
+                        ValidationResults = validationResults,
+                        PropertyInfoListOfDto = null
+                    });
                 }
             }
             catch (Exception)
             {
-                return BadRequest(new SaveResponseDto<TReadDto> { IsSuccessful = false, Message = "An error occurred while saving data.", Data = null, ValidationResults = new List<ValidationResultDto>(), PropertyInfoListOfDto = null });
+                return BadRequest(new SaveResponseDto<TReadDto>
+                {
+                    IsSuccessful = false,
+                    Message = "An error occurred while saving data.",
+                    Data = null,
+                    ValidationResults = new List<ValidationResultDto>(),
+                    PropertyInfoListOfDto = null
+                });
             }
         }
 
@@ -69,17 +90,38 @@ namespace WWESuperstarsManagementSystemAPI.Controllers
                 if (validationResults.IsEmpty())
                 {
                     TReadDto readDto = _genericService.Update(id, saveDto, _propertiesToInclude);
-                    return Ok(new SaveResponseDto<TReadDto> { IsSuccessful = true, Message = "Data is successfully saved.", Data = readDto, ValidationResults = validationResults, PropertyInfoListOfDto = _propertyInfoList });
+                    return Ok(new SaveResponseDto<TReadDto>
+                    {
+                        IsSuccessful = true,
+                        Message = "Data is successfully saved.",
+                        Data = readDto,
+                        ValidationResults = validationResults,
+                        PropertyInfoListOfDto = _propertyInfoList
+                    });
                 }
                 else
                 {
-                    return BadRequest(new SaveResponseDto<TReadDto> { IsSuccessful = false, Message = "Invalid data.", Data = null, ValidationResults = validationResults, PropertyInfoListOfDto = null });
+                    return BadRequest(new SaveResponseDto<TReadDto>
+                    {
+                        IsSuccessful = false,
+                        Message = "Invalid data.",
+                        Data = null,
+                        ValidationResults = validationResults,
+                        PropertyInfoListOfDto = null
+                    });
                 }
             }
             catch (Exception)
             {
 
-                return BadRequest(new SaveResponseDto<TReadDto> { IsSuccessful = false, Message = "An error occurred while updating data.", Data = null, ValidationResults = new List<ValidationResultDto>(), PropertyInfoListOfDto = null });
+                return BadRequest(new SaveResponseDto<TReadDto>
+                {
+                    IsSuccessful = false,
+                    Message = "An error occurred while updating data.",
+                    Data = null,
+                    ValidationResults = new List<ValidationResultDto>(),
+                    PropertyInfoListOfDto = null
+                });
             }
         }
 
@@ -89,11 +131,23 @@ namespace WWESuperstarsManagementSystemAPI.Controllers
             try
             {
                 _genericService.Delete(id);
-                return Ok(new SingleResponseDto<int> { IsSuccessful = true, Message = "Data is successfully deleted.", Data = id, PropertyInfoListOfDto = null });
+                return Ok(new SingleResponseDto<int>
+                {
+                    IsSuccessful = true,
+                    Message = "Data is successfully deleted.",
+                    Data = id,
+                    PropertyInfoListOfDto = null
+                });
             }
             catch (Exception)
             {
-                return BadRequest(new SingleResponseDto<int> { IsSuccessful = false, Message = "An error occurred while deleting data.", Data = int.MinValue, PropertyInfoListOfDto = null });
+                return BadRequest(new SingleResponseDto<int>
+                {
+                    IsSuccessful = false,
+                    Message = "An error occurred while deleting data.",
+                    Data = int.MinValue,
+                    PropertyInfoListOfDto = null
+                });
             }
         }
 
@@ -103,11 +157,23 @@ namespace WWESuperstarsManagementSystemAPI.Controllers
             try
             {
                 TReadDto readDto = _genericService.GetByID(id, _propertiesToInclude);
-                return Ok(new SingleResponseDto<TReadDto> { IsSuccessful = true, Message = "Data is successfully retrived.", Data = readDto, PropertyInfoListOfDto = _propertyInfoList });
+                return Ok(new SingleResponseDto<TReadDto>
+                {
+                    IsSuccessful = true,
+                    Message = "Data is successfully retrived.",
+                    Data = readDto,
+                    PropertyInfoListOfDto = _propertyInfoList
+                });
             }
             catch (Exception)
             {
-                return BadRequest(new SingleResponseDto<TReadDto> { IsSuccessful = false, Message = "An error occurred while retriving data.", Data = null, PropertyInfoListOfDto = null });
+                return BadRequest(new SingleResponseDto<TReadDto>
+                {
+                    IsSuccessful = false,
+                    Message = "An error occurred while retriving data.",
+                    Data = null,
+                    PropertyInfoListOfDto = null
+                });
             }
         }
 
@@ -117,11 +183,23 @@ namespace WWESuperstarsManagementSystemAPI.Controllers
             try
             {
                 IEnumerable<TReadDto> readDtoList = _genericService.GetAll(_propertiesToInclude);
-                return Ok(new ListResponseDto<TReadDto> { IsSuccessful = true, Message = "Data is successfully retrived.", List = readDtoList, PropertyInfoListOfDto = _propertyInfoList });
+                return Ok(new ListResponseDto<TReadDto>
+                {
+                    IsSuccessful = true,
+                    Message = "Data is successfully retrived.",
+                    List = readDtoList,
+                    PropertyInfoListOfDto = _propertyInfoList
+                });
             }
             catch (Exception)
             {
-                return BadRequest(new ListResponseDto<TReadDto> { IsSuccessful = false, Message = "An error occurred while retriving data.", List = null, PropertyInfoListOfDto = null });
+                return BadRequest(new ListResponseDto<TReadDto>
+                {
+                    IsSuccessful = false,
+                    Message = "An error occurred while retriving data.",
+                    List = null,
+                    PropertyInfoListOfDto = null
+                });
             }
         }
 
@@ -132,11 +210,23 @@ namespace WWESuperstarsManagementSystemAPI.Controllers
             {
                 QueryCriteria queryCriteria = _mapper.Map<QueryCriteriaRequestDto, QueryCriteria>(queryCriteriaRequestDto);
                 PagedList<TReadDto> readDtoPagedList = _genericService.GetAll(queryCriteria, _propertiesToInclude);
-                return Ok(new PagedResponseDto<TReadDto> { IsSuccessful = true, Message = "Data is successfully retrived.", PagedList = readDtoPagedList, PropertyInfoListOfDto = _propertyInfoList });
+                return Ok(new PagedResponseDto<TReadDto>
+                {
+                    IsSuccessful = true,
+                    Message = "Data is successfully retrived.",
+                    PagedList = readDtoPagedList,
+                    PropertyInfoListOfDto = _propertyInfoList
+                });
             }
             catch (Exception)
             {
-                return BadRequest(new PagedResponseDto<TReadDto> { IsSuccessful = false, Message = "An error occurred while retriving data.", PagedList = null, PropertyInfoListOfDto = null });
+                return BadRequest(new PagedResponseDto<TReadDto>
+                {
+                    IsSuccessful = false,
+                    Message = "An error occurred while retriving data.",
+                    PagedList = null,
+                    PropertyInfoListOfDto = null
+                });
             }
         }
 
@@ -146,11 +236,23 @@ namespace WWESuperstarsManagementSystemAPI.Controllers
             try
             {
                 int count = _genericService.Count();
-                return Ok(new SingleResponseDto<int> { IsSuccessful = true, Message = "Data is successfully retrived.", Data = count, PropertyInfoListOfDto = null });
+                return Ok(new SingleResponseDto<int>
+                {
+                    IsSuccessful = true,
+                    Message = "Data is successfully retrived.",
+                    Data = count,
+                    PropertyInfoListOfDto = null
+                });
             }
             catch (Exception)
             {
-                return BadRequest(new SingleResponseDto<int> { IsSuccessful = false, Message = "An error occurred while retriving total count of records.", Data = int.MinValue, PropertyInfoListOfDto = null });
+                return BadRequest(new SingleResponseDto<int>
+                {
+                    IsSuccessful = false,
+                    Message = "An error occurred while retriving total count of records.",
+                    Data = int.MinValue,
+                    PropertyInfoListOfDto = null
+                });
             }
         }
     }
