@@ -257,6 +257,7 @@ namespace WWESuperstarsManagementSystemConsole.Helpers
         public static void ShowHeading(string subtitle)
         {
             StringBuilder stringBuilder = new StringBuilder();
+
             for (int i = 0; i < subtitle.Length + 1; i++)
             {
                 stringBuilder.Append(DividingBarChar);
