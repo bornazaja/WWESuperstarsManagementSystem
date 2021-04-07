@@ -16,7 +16,7 @@ For simplicity of the project .NET Core console app is used for client with depe
 
 ### Instructions
 * Clone or download and unzip project
-* Clean and rebuld solution
+* Clean and rebuild solution
 * Run SQL script in MS SQL Management Studio which is located in folder `WWESuperstarsManagementSystem/WWESuperstarsManagementSystemLibrary/sql/WWESuperstarsManagementSystemScript.sql`
 * As needed in project `WWESuperstarsManagementSystemLibrary` change connection string in namespace `WWESuperstarsManagementSystemLibrary/DAL/Models` in class `WWESuperstarsManagementSystemContext.cs` in protected overrided method `OnConfiguring(DbContextOptionsBuild optionsBuilder)`
 * Run `WWESuperstarsManagementSystemAPI`
