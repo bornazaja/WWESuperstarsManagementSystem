@@ -254,17 +254,17 @@ namespace WWESuperstarsManagementSystemConsole.Helpers
             }
         }
 
-        public static void ShowHeading(string subtitle)
+        public static void ShowHeading(string headingText)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            for (int i = 0; i < subtitle.Length + 1; i++)
+            for (int i = 0; i < headingText.Length + 1; i++)
             {
                 stringBuilder.Append(DividingBarChar);
             }
 
             ShowYellowMessage(stringBuilder.ToString());
-            ShowYellowMessage(subtitle);
+            ShowYellowMessage(headingText);
             ShowYellowMessage(stringBuilder.ToString());
             Console.WriteLine();
         }
