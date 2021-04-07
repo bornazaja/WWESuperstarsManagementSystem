@@ -53,8 +53,6 @@ namespace WWESuperstarsManagementSystemConsole.Views.Implementations
                     case CityMenu.ShowTotalCount:
                         await ShowTotalCountAsync();
                         break;
-                    default:
-                        break;
                 }
 
                 ConsoleHelper.ShowPressAnyKeyToContinue();
