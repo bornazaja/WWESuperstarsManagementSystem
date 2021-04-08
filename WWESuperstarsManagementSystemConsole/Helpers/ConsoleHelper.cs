@@ -111,7 +111,7 @@ namespace WWESuperstarsManagementSystemConsole.Helpers
             return d;
         }
 
-        public static TEnum GetEnum<TEnum>(string message, bool showValues = true) where TEnum : struct, IConvertible
+        public static TEnum GetEnum<TEnum>(string message, bool showValues = true) where TEnum : struct
         {
             TEnum myEnum;
             object[] enumValues = Enum.GetValues(typeof(TEnum)).OfType<object>().ToArray().Select(x => $"{(int)x} = {x}").ToArray();
