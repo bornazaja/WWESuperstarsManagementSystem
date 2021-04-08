@@ -47,12 +47,12 @@ namespace WWESuperstarsManagementSystemAPI
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IGenericService<,,>), typeof(GenericService<,,>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IPropertyProviderFactory, PropertyProviderFactory>();
 
-            services.AddToScopeMultipleInterfacesAndImplementations("Repository", "Repositories");
-            services.AddToScopeMultipleInterfacesAndImplementations("Service", "Services");
+            services.AddScoped(nameof(WWESuperstarsManagementSystemLibrary), "Repository", "Repositories");
+            services.AddScoped(nameof(WWESuperstarsManagementSystemLibrary), "Service", "Services");
 
             services.AddTransient<IValidator, DataAnnotationValidator>();
-            services.AddTransient<IPropertyProviderFactory, PropertyProviderFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
