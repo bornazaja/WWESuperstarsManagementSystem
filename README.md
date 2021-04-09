@@ -1,5 +1,5 @@
 # WWE Superstars Management System
-WWE Superstars Management System is application that has REST API service on which you can send and retreive data.
+WWE Superstars Management System is an application that has REST API service on which you can send and receive data.
 
 For simplicity of the project .NET Core console app is used for client with dependency injection (DI).
 
